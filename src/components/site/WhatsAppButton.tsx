@@ -13,7 +13,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export function WhatsAppButton() {
   // Configured with your specific number and message
-  const phoneNumber = "92315323811"; // Formatted with +92 country code
+  const phoneNumber = "03152323811"; // Formatted with +92 country code
   const message = "Hi AL ARBAB TRAVEL AND TOURS, I need help with a visa enquiry.";
   const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
