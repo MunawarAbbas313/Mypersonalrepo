@@ -1,0 +1,45 @@
+# AL ARBAB TRAVEL AND TOURS — https://alarbabtravels.pk
+# Best Travel Agency in Pakistan | IATA Authorized | Islamabad
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_redirects
+Disallow: /data/
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://alarbabtravels.pk/sitemap.xml
+
+# LLMs
+LLMs: https://alarbabtravels.pk/llms.txt

@@ -1,0 +1,22 @@
+export const COMPANY = {
+  name: "AL ARBAB TRAVEL AND TOURS",
+  tagline: "Pakistan's No.1 Travel Agency — Your Gateway to the World",
+  phone: "0315323811",
+  mobile: "0315323811",
+  phone2: "03099923232",
+  mobile2: "03099923232",
+  whatsapp: "0315323811",
+  whatsapp2: "03099923232",
+  phoneDisplay: "0315323811 / 03099923232",
+  email: "alarbabtravels@gmail.com",
+  address: "office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area Islamabad",
+  mapUrl: "https://maps.google.com/?q=Ginnaz+Center+Jinnah+Avenue+Blue+Area+Islamabad",
+  hours: "Mon – Sat · 8:00 AM – 8:00 PM",
+  websites: [],
+  socials: {
+    facebook: "https://www.facebook.com/alarbabtravels",
+    instagram: "https://www.instagram.com/alarbabtravels/",
+    linkedin: "https://www.linkedin.com/company/alarbabtravels/",
+    twitter: "https://twitter.com/alarbabtravels",
+  },
+};
