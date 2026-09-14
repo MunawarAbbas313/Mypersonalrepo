@@ -112,7 +112,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xl font-black text-white tracking-tighter leading-none uppercase">AL ARBAB</span>
-                    <span className="text-xs font-black text-[#F7941D] tracking-[0.25em] uppercase mt-1">TRAVEL &amp; TOURS</span>
+                    <span className="text-xs font-black text-[#F9B319] tracking-[0.25em] uppercase mt-1">TRAVEL &amp; TOURS</span>
                   </div>
                 </Link>
                 <p className="text-sm text-white/45 leading-relaxed font-medium">
@@ -156,7 +156,7 @@ export function Footer() {
                   <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">Our Office</h4>
                   <a href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors group/map">
                     <MapPin size={14} className="text-primary group-hover/map:scale-110 transition-transform shrink-0" />
-                    <span className="text-xs font-bold">Blue Area, Islamabad (Map)</span>
+                    <span className="text-xs font-bold">Eagle Plaza, Blue Area, Islamabad (Map)</span>
                   </a>
                 </div>
               </div>
@@ -244,12 +244,16 @@ export function Footer() {
                 <div className="space-y-6">
                   <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white">Contact</h4>
                   <div className="space-y-5">
-                    <a href={`tel:${COMPANY.mobile}`} className="group block">
+                    <div className="group block">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary mb-1 flex items-center gap-1">
                         <Phone size={8} /> Direct Call
                       </p>
-                      <p className="text-xs font-black text-white/90 group-hover:text-white group-hover:underline underline-offset-4">{COMPANY.mobile} / {COMPANY.mobile2}</p>
-                    </a>
+                      <p className="text-xs font-black text-white/90">
+                        <a href={`tel:${COMPANY.mobile}`} className="hover:text-white hover:underline underline-offset-4">{COMPANY.mobile}</a>
+                        {" "}<span className="text-white/40">|</span>{" "}
+                        <a href={`tel:${COMPANY.landline.replace(/\D/g, "")}`} className="hover:text-white hover:underline underline-offset-4">{COMPANY.landline}</a>
+                      </p>
+                    </div>
                     <a href={`mailto:${COMPANY.email}`} className="group block">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/60 mb-1 flex items-center gap-1">
                         <Mail size={8} /> Email

@@ -61,13 +61,20 @@ export function TopBar() {
         </div>
 
         {/* Contact Info (Always Visible) */}
-        <div className="hidden md:flex items-center gap-4 bg-[#0D47A1]/80 backdrop-blur-md px-5 py-1.5 rounded-full border border-white/20">
+        <div className="hidden md:flex items-center gap-3 bg-[#0D47A1]/80 backdrop-blur-md px-5 py-1.5 rounded-full border border-white/20 text-white font-black uppercase tracking-widest text-[11px]">
+          <Phone size={12} className="text-white shrink-0" />
           <a
             href={`tel:${COMPANY.mobile}`}
-            className="inline-flex items-center gap-2 text-white hover:text-[#F7941D] transition-colors font-black uppercase tracking-widest group"
+            className="hover:text-[#F7941D] transition-colors drop-shadow-md"
           >
-            <Phone size={12} className="text-white group-hover:text-[#F7941D] hover-rotate-icon transition-colors" />
-            <span className="drop-shadow-md">{COMPANY.mobile}</span>
+            {COMPANY.mobile}
+          </a>
+          <span className="text-white/40">|</span>
+          <a
+            href={`tel:${COMPANY.landline.replace(/\D/g, "")}`}
+            className="hover:text-[#F7941D] transition-colors drop-shadow-md"
+          >
+            {COMPANY.landline}
           </a>
         </div>
       </div>

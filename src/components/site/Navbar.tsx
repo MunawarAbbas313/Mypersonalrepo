@@ -82,8 +82,8 @@ export function Navbar() {
               />
             </div>
             <div className="hidden sm:flex flex-col leading-none">
-              <span className="text-sm md:text-base lg:text-[15px] xl:text-lg font-black tracking-tight text-[#0D47A1] whitespace-nowrap">
-                AL ARBAB <span className="text-[#F7941D]">TRAVEL &amp; TOURS</span>
+              <span className="text-sm md:text-base lg:text-[15px] xl:text-lg font-black tracking-tight text-[#F9B319] whitespace-nowrap">
+                AL ARBAB <span className="text-[#004AAD]">TRAVEL &amp; TOURS</span>
               </span>
               <span className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground/70 whitespace-nowrap mt-0.5">
                 Islamabad, Pakistan
@@ -182,12 +182,12 @@ export function Navbar() {
 
             <Link
               to="/visa-services"
-              className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 px-6 py-2.5 text-xs font-black text-white shadow-[0_0_20px_rgba(220,38,38,0.5)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(220,38,38,0.8)] hover:-translate-y-0.5 hover:scale-105 active:scale-95 group/btn animate-pulse hover:animate-none border border-white/20"
+              className="group/btn relative inline-flex items-center p-1 rounded-full bg-gradient-to-r from-[#E61B1B] via-[#E4247E] to-[#C845B6] shadow-[0_4px_18px_rgba(228,36,126,0.4)] transition-all duration-300 hover:shadow-[0_6px_25px_rgba(228,36,126,0.65)] hover:scale-[1.02] active:scale-[0.98]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-              <span className="relative z-10 flex items-center gap-1.5 uppercase tracking-widest drop-shadow-md">
-                🔥 Apply Visa Now
-                <ChevronRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
+              <span className="relative inline-flex items-center gap-1.5 rounded-full border border-white/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white transition-all duration-300 group-hover/btn:border-white/70 group-hover/btn:bg-white/10 drop-shadow-sm">
+                <span>🔥</span>
+                <span>Apply Visa Now</span>
+                <ChevronRight size={15} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 text-white" />
               </span>
             </Link>
           </div>
@@ -226,8 +226,8 @@ export function Navbar() {
                   <div className="flex items-center gap-3">
                     <img src={logo} alt={COMPANY.name} className="h-8 w-auto" />
                     <div className="flex flex-col leading-none">
-                      <span className="text-sm font-black text-foreground">AL ARBAB</span>
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-primary">Travel &amp; Tours</span>
+                      <span className="text-sm font-black text-[#F9B319]">AL ARBAB</span>
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#004AAD]">Travel &amp; Tours</span>
                     </div>
                   </div>
                   <button

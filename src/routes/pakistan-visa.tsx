@@ -38,7 +38,7 @@ function PakistanVisaPage() {
       url: "https://alarbabtravels.pk",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area",
+        streetAddress: "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area",
         addressLocality: "Islamabad",
         addressCountry: "PK",
       },
@@ -140,7 +140,7 @@ function PakistanVisaPage() {
                   href={`tel:${COMPANY.phone}`}
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-bold shadow-soft hover:-translate-y-0.5 transition-transform hover:border-primary"
                 >
-                  Call {COMPANY.phone}
+                  Call {COMPANY.phone} | {COMPANY.landline}
                 </a>
               </div>
             </div>

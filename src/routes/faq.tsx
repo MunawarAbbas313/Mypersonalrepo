@@ -35,7 +35,7 @@ const EXTENDED_FAQS = [
   },
   {
     q: "Where is AL ARBAB TRAVEL AND TOURS located?",
-    a: "Our head office is conveniently located at office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area Islamabad. We welcome walk-in consultations Monday through Saturday from 10:00 AM to 7:00 PM."
+    a: "Our head office is conveniently located at Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad. We welcome walk-in consultations Monday through Saturday from 10:00 AM to 7:00 PM."
   }
 ];
 

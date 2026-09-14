@@ -11,12 +11,12 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact Pakistan's best visa consultancy. Visit AL ARBAB TRAVEL AND TOURS in Blue Area, Islamabad or reach us via phone 0315323811 / 03099923232, WhatsApp, or email. Open Mon-Sat 10AM-7PM. Expert visa & travel guidance.",
+          "Contact Pakistan's best visa consultancy. Visit AL ARBAB TRAVEL AND TOURS at Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad or reach us via phone 03152323811 | 051-2000066, WhatsApp, or email. Open Mon-Sat 10AM-7PM. Expert visa & travel guidance.",
       },
       {
         name: "keywords",
         content:
-          "contact AL ARBAB TRAVEL AND TOURS, visa office islamabad blue area, best visa agency address islamabad, immigration office near me islamabad, AL ARBAB TRAVEL AND TOURS phone number, WhatsApp visa agent pakistan, travel agency contact islamabad, visa consultant near me pakistan, AL ARBAB TRAVEL AND TOURS email, AL ARBAB TRAVEL AND TOURS whatsapp number",
+          "contact AL ARBAB TRAVEL AND TOURS, visa office islamabad blue area, eagle plaza blue area, best visa agency address islamabad, immigration office near me islamabad, AL ARBAB TRAVEL AND TOURS phone number, 051-2000066, WhatsApp visa agent pakistan, travel agency contact islamabad, visa consultant near me pakistan, AL ARBAB TRAVEL AND TOURS email, AL ARBAB TRAVEL AND TOURS whatsapp number",
       },
       { name: "robots", content: "index, follow" },
       { name: "geo.region", content: "PK-IS" },
@@ -28,14 +28,14 @@ export const Route = createFileRoute("/contact")({
       {
         property: "og:description",
         content:
-          "Visit us at Blue Area, Islamabad. Expert help for Schengen, UK, USA, Canada & Australia visas. WhatsApp, phone & walk-in available.",
+          "Visit us at Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad. Expert help for Schengen, UK, USA, Canada & Australia visas. WhatsApp, phone & walk-in available.",
       },
       { property: "og:image", content: "https://alarbabtravels.pk/src/assets/hero-travel.jpg" },
       { property: "og:url", content: "https://alarbabtravels.pk/contact" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Contact Pakistan's #1 Visa Agency | AL ARBAB TRAVEL AND TOURS" },
-      { name: "twitter:description", content: "Blue Area, Islamabad. Phone, WhatsApp & walk-in consultations available." },
+      { name: "twitter:description", content: "Eagle Plaza, Blue Area, Islamabad. Phone: 03152323811 | 051-2000066, WhatsApp & walk-in consultations available." },
     ],
     links: [
       { rel: "canonical", href: "https://alarbabtravels.pk/contact" },
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const NEW_ADDRESS = "office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area Islamabad";
+  const NEW_ADDRESS = "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad";
 
   return (
     <>
@@ -74,8 +74,14 @@ function Contact() {
                 {
                   icon: Phone,
                   t: "Phone",
-                  d: COMPANY.phone,
+                  d: `${COMPANY.phone} | ${COMPANY.landline}`,
                   href: `tel:${COMPANY.phone.replace(/\s/g, "")}`,
+                },
+                {
+                  icon: Phone,
+                  t: "Landline (PTCL)",
+                  d: COMPANY.landline,
+                  href: `tel:${COMPANY.landline.replace(/\D/g, "")}`,
                 },
                 {
                   icon: Phone,
@@ -126,8 +132,8 @@ function Contact() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="overflow-hidden rounded-[2rem]">
                   <iframe
-                    title="AL ARBAB TRAVEL AND TOURS office in Blue Area, Islamabad"
-                    src="https://www.google.com/maps?q=Ginnaz+Center,+Jinnah+Avenue,+Blue+Area,+Islamabad&z=17&output=embed"
+                    title="AL ARBAB TRAVEL AND TOURS office in Eagle Plaza, Blue Area, Islamabad"
+                    src="https://www.google.com/maps?q=Eagle+Plaza,+Fazal-e-Haq+Road,+Blue+Area,+Islamabad&z=17&output=embed"
                     loading="lazy"
                     className="h-[300px] w-full border-0 filter transition-all duration-500 group-hover:brightness-105"
                   />

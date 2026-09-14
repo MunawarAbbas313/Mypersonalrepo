@@ -14,14 +14,14 @@ const TICKETING_FAQS = [
   { q: "What airlines can I book through AL ARBAB TRAVEL AND TOURS?", a: "We issue tickets on all major carriers including PIA, Emirates, Qatar Airways, Turkish Airlines, Etihad, Saudi Airlines, British Airways, Air Canada, Lufthansa, Singapore Airlines, Thai Airways, and 290+ more." },
   { q: "How fast can I get my e-ticket after booking?", a: "Instant. Once payment is confirmed, your e-ticket is issued within minutes and sent directly to your email and WhatsApp." },
   { q: "Do you handle flight cancellations and date changes?", a: "Yes, our 24/7 support team handles all post-booking changes including cancellations, date changes, and name corrections as per airline policy." },
-  { q: "Where is your office located in Islamabad?", a: "office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area Islamabad. We are open Monday to Saturday, 10 AM – 7 PM." },
+  { q: "Where is your office located in Islamabad?", a: "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad. We are open Monday to Saturday, 10 AM – 7 PM." },
 ];
 
 export const Route = createFileRoute("/air-ticketing")({
   head: () => ({
     meta: [
       { title: "Best Air Ticketing Agency in Islamabad 2026 — Cheap Flights, IATA Deals | AL ARBAB TRAVEL AND TOURS" },
-      { name: "description", content: "AL ARBAB TRAVEL AND TOURS is Islamabad's #1 IATA-authorized air ticketing agency in Blue Area. Book cheap flights to UK, USA, Canada, Dubai, Turkey & Australia. Instant e-tickets, group bookings, student discounts & 24/7 WhatsApp support. Call 0315323811 / 03099923232." },
+      { name: "description", content: "AL ARBAB TRAVEL AND TOURS is Islamabad's #1 IATA-authorized air ticketing agency in Blue Area. Book cheap flights to UK, USA, Canada, Dubai, Turkey & Australia. Instant e-tickets, group bookings, student discounts & 24/7 WhatsApp support. Call 03152323811 | 051-2000066." },
       { name: "keywords", content: "best air ticketing agency Islamabad, cheap flights from Islamabad, IATA authorized travel agent Islamabad, international flight booking Pakistan, cheap tickets to UK from Islamabad, USA flight booking ISB, airline reservation Islamabad Blue Area, last minute flights Pakistan, group flight booking Islamabad, student discount tickets Islamabad, business class deals ISB, Umrah flight booking Islamabad, cheap flights to Dubai from ISB, Toronto flight from Islamabad, PIA ticket agent Islamabad, Emirates ticket Islamabad, Qatar Airways booking Pakistan, Turkish Airlines Islamabad, flight booking near me Islamabad, travel agency Blue Area Islamabad, air ticket price Islamabad to London, Islamabad to Jeddah flight, best travel agent Pakistan 2026, AL ARBAB TRAVEL AND TOURS air ticketing" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { name: "author", content: "AL ARBAB TRAVEL AND TOURS" },
@@ -346,11 +346,11 @@ function AirTicketing() {
               "logo": "https://alarbabtravels.pk/logo.png",
               "image": "https://alarbabtravels.pk/air_ticketing_hero_1777294022698.webp",
               "description": "Islamabad's #1 IATA-authorized air ticketing agency. Cheap international flights, group bookings, student discounts, Umrah packages, and 24/7 WhatsApp support from Blue Area.",
-              "telephone": "0315323811 / 03099923232",
+              "telephone": "03152323811 | 051-2000066",
               "email": "alarbabtravels@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "office no # 306 B , 3rd Floor , Ginnaz Center, Jinnah Avenue , Blue Area",
+                "streetAddress": "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area",
                 "addressLocality": "Islamabad",
                 "addressRegion": "Islamabad Capital Territory",
                 "postalCode": "44000",

@@ -144,11 +144,11 @@ function Home() {
     description: "Top Travel Agency & Visa Consultant in Pakistan.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Blue Area",
+      streetAddress: "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area",
       addressLocality: "Islamabad",
       addressCountry: "PK",
     },
-    telephone: COMPANY.phone,
+    telephone: `${COMPANY.phone} | ${COMPANY.landline}`,
     email: COMPANY.email,
   };
 
@@ -464,13 +464,19 @@ function Home() {
             />
             <ul className="space-y-3 text-sm">
               <li className="flex gap-3">
-                <MapPin className="text-primary mt-0.5" size={18} /> Blue Area, Islamabad, Pakistan
+                <MapPin className="text-primary mt-0.5" size={18} /> Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area, Islamabad
               </li>
               <li className="flex gap-3">
                 <Phone className="text-primary mt-0.5" size={18} />{" "}
-                <a className="hover:text-primary" href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}>
-                  {COMPANY.phone}
-                </a>
+                <span className="flex flex-wrap items-center gap-x-2">
+                  <a className="hover:text-primary" href={`tel:${COMPANY.phone.replace(/\s/g, "")}`}>
+                    {COMPANY.phone}
+                  </a>
+                  <span className="text-muted-foreground/60">|</span>
+                  <a className="hover:text-primary" href={`tel:${COMPANY.landline.replace(/\D/g, "")}`}>
+                    {COMPANY.landline}
+                  </a>
+                </span>
               </li>
               <li className="flex gap-3">
                 <Mail className="text-primary mt-0.5" size={18} />{" "}
@@ -493,7 +499,7 @@ function Home() {
             <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-soft">
               <iframe
                 title="Office location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.46788506085!2d73.067341!3d33.7135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf9ce9999999%3A0x9999999999999999!2sAir%20Connection%20Travel%20%26%20Tours!5e0!3m2!1sen!2spk!4v1717616428789!5m2!1sen!2spk"
+                src="https://www.google.com/maps?q=Eagle+Plaza,+Fazal-e-Haq+Road,+Blue+Area,+Islamabad&output=embed"
                 loading="lazy"
                 className="h-64 w-full"
               />
