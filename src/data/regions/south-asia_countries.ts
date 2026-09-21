@@ -217,4 +217,27 @@ export const SOUTH_ASIA_COUNTRIES = [
     image:
       "https://images.unsplash.com/photo-1500049242364-5f500807cdd7?auto=format&fit=crop&q=80&w=800",
   },
+  {
+    slug: "singapore",
+    name: "Singapore",
+    code: "sg",
+    title: "Singapore Visa Consultant in Islamabad",
+    description: "Fast electronic visa (e-Visa) processing for Singapore from Pakistan.",
+    keywords: "Singapore visa consultant Islamabad, Singapore e-visa Pakistan, Singapore tourist visa",
+    intro:
+      "Singapore is a world-class global hub of innovation, shopping, and iconic attractions like Marina Bay Sands and Sentosa. We assist with end-to-end e-visa processing and documentation.",
+    docs: [
+      "Original Passport with 6 months validity",
+      "Two Photographs (White background, 35x45mm)",
+      "Bank Statement (Last 6 months, verified)",
+      "Employment Letter / Business Documents",
+      "Confirmed Flight Itinerary & Hotel Booking",
+      "NADRA Family Registration Certificate (FRC)",
+      "Polio Vaccination Certificate",
+    ],
+    popularPlaces: ["Marina Bay Sands", "Gardens by the Bay", "Sentosa Island", "Universal Studios"],
+    image:
+      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=800",
+  },
 ];
+

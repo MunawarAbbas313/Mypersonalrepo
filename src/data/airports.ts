@@ -222,13 +222,6 @@ export const AIRPORTS = [
   { code: "KIN", name: "Norman Manley Intl", city: "Kingston" },
   // Trinidad & Tobago
   { code: "POS", name: "Piarco Intl", city: "Port of Spain" },
-  // India
-  { code: "DEL", name: "Indira Gandhi Intl", city: "Delhi" },
-  { code: "BOM", name: "Chhatrapati Shivaji Intl", city: "Mumbai" },
-  { code: "BLR", name: "Kempegowda Intl", city: "Bengaluru" },
-  { code: "MAA", name: "Chennai Intl", city: "Chennai" },
-  { code: "CCU", name: "Netaji Subhas Chandra Bose", city: "Kolkata" },
-  { code: "HYD", name: "Rajiv Gandhi Intl", city: "Hyderabad" },
   // Bangladesh
   { code: "DAC", name: "Hazrat Shahjalal Intl", city: "Dhaka" },
   { code: "CGP", name: "Shah Amanat Intl", city: "Chittagong" },

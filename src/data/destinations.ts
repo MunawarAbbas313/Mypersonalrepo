@@ -368,7 +368,7 @@ export const DESTINATIONS: Destination[] = [
       },
       {
         q: "What is the total Canada visa fee?",
-        a: "The processing fee is $100 CAD, and the biometrics fee is $85 CAD, totaling $185 CAD.",
+        a: "The official IRCC fee is $100 CAD (processing) plus $85 CAD (biometrics), totaling $185 CAD (payable online in PKR equivalent on application day). Contact AL ARBAB TRAVEL AND TOURS for complete fee challan & file submission.",
       },
     ],
     visas: [
@@ -393,7 +393,7 @@ export const DESTINATIONS: Destination[] = [
           "Comprehensive Statement of Purpose (SOP)",
           "Proof of Assets (Property, Cars, Investments in Pakistan)",
         ],
-        fees: "$185 CAD (Processing + Biometrics) + Service Charges",
+        fees: "Official Embassy Fee: $185 CAD (IRCC + Biometrics) + Complete Consultancy",
         processingTime: "Typically 4 to 12 weeks depending on embassy workload.",
         tips: [
           "Your SOP is the most important part of your application; make it convincing.",

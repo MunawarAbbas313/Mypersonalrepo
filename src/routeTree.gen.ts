@@ -13,7 +13,9 @@ import { Route as VisaServicesRouteImport } from './routes/visa-services'
 import { Route as UmrahRouteImport } from './routes/umrah'
 import { Route as TravelInsuranceRouteImport } from './routes/travel-insurance'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ProfileAssessmentRouteImport } from './routes/profile-assessment'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PassportServicesRouteImport } from './routes/passport-services'
 import { Route as PartnerAirlinesRouteImport } from './routes/partner-airlines'
 import { Route as PakistanVisaRouteImport } from './routes/pakistan-visa'
@@ -59,9 +61,19 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
   path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileAssessmentRoute = ProfileAssessmentRouteImport.update({
   id: '/profile-assessment',
   path: '/profile-assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PassportServicesRoute = PassportServicesRouteImport.update({
@@ -207,7 +219,9 @@ export interface FileRoutesByFullPath {
   '/pakistan-visa': typeof PakistanVisaRoute
   '/partner-airlines': typeof PartnerAirlinesRoute
   '/passport-services': typeof PassportServicesRoute
+  '/privacy': typeof PrivacyRoute
   '/profile-assessment': typeof ProfileAssessmentRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/travel-insurance': typeof TravelInsuranceRoute
   '/umrah': typeof UmrahRoute
@@ -238,7 +252,9 @@ export interface FileRoutesByTo {
   '/pakistan-visa': typeof PakistanVisaRoute
   '/partner-airlines': typeof PartnerAirlinesRoute
   '/passport-services': typeof PassportServicesRoute
+  '/privacy': typeof PrivacyRoute
   '/profile-assessment': typeof ProfileAssessmentRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/travel-insurance': typeof TravelInsuranceRoute
   '/umrah': typeof UmrahRoute
@@ -270,7 +286,9 @@ export interface FileRoutesById {
   '/pakistan-visa': typeof PakistanVisaRoute
   '/partner-airlines': typeof PartnerAirlinesRoute
   '/passport-services': typeof PassportServicesRoute
+  '/privacy': typeof PrivacyRoute
   '/profile-assessment': typeof ProfileAssessmentRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/travel-insurance': typeof TravelInsuranceRoute
   '/umrah': typeof UmrahRoute
@@ -303,7 +321,9 @@ export interface FileRouteTypes {
     | '/pakistan-visa'
     | '/partner-airlines'
     | '/passport-services'
+    | '/privacy'
     | '/profile-assessment'
+    | '/terms'
     | '/testimonials'
     | '/travel-insurance'
     | '/umrah'
@@ -334,7 +354,9 @@ export interface FileRouteTypes {
     | '/pakistan-visa'
     | '/partner-airlines'
     | '/passport-services'
+    | '/privacy'
     | '/profile-assessment'
+    | '/terms'
     | '/testimonials'
     | '/travel-insurance'
     | '/umrah'
@@ -365,7 +387,9 @@ export interface FileRouteTypes {
     | '/pakistan-visa'
     | '/partner-airlines'
     | '/passport-services'
+    | '/privacy'
     | '/profile-assessment'
+    | '/terms'
     | '/testimonials'
     | '/travel-insurance'
     | '/umrah'
@@ -397,7 +421,9 @@ export interface RootRouteChildren {
   PakistanVisaRoute: typeof PakistanVisaRoute
   PartnerAirlinesRoute: typeof PartnerAirlinesRoute
   PassportServicesRoute: typeof PassportServicesRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProfileAssessmentRoute: typeof ProfileAssessmentRoute
+  TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   TravelInsuranceRoute: typeof TravelInsuranceRoute
   UmrahRoute: typeof UmrahRoute
@@ -448,11 +474,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile-assessment': {
       id: '/profile-assessment'
       path: '/profile-assessment'
       fullPath: '/profile-assessment'
       preLoaderRoute: typeof ProfileAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/passport-services': {
@@ -637,7 +677,9 @@ const rootRouteChildren: RootRouteChildren = {
   PakistanVisaRoute: PakistanVisaRoute,
   PartnerAirlinesRoute: PartnerAirlinesRoute,
   PassportServicesRoute: PassportServicesRoute,
+  PrivacyRoute: PrivacyRoute,
   ProfileAssessmentRoute: ProfileAssessmentRoute,
+  TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   TravelInsuranceRoute: TravelInsuranceRoute,
   UmrahRoute: UmrahRoute,

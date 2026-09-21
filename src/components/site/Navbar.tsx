@@ -1,58 +1,56 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronRight, ShieldCheck } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, User, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/data/navigation";
+import { TicketPlanLogo } from "./TicketPlanLogo";
 import { COMPANY } from "@/data/company";
-import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.png";
 
-const VISA_REGIONS = [
+const NAV_DROPDOWNS = [
   {
-    id: "asia",
-    label: "Asia",
-    countries: [
-      { name: "Azerbaijan", code: "az" },
-      { name: "Bahrain", code: "bh" },
-      { name: "China", code: "cn" },
-      { name: "Cambodia", code: "kh" },
-      { name: "Indonesia", code: "id" },
-      { name: "Japan", code: "jp" },
-      { name: "Kazakhstan", code: "kz" },
-      { name: "Malaysia", code: "my" },
-      { name: "Maldives", code: "mv" },
-    ]
+    label: "Visa Services",
+    items: [
+      { name: "Schengen Visa (Europe)", to: "/countries/schengen/france", desc: "France, Italy, Germany & 29 EU nations" },
+      { name: "UK & USA Visas", to: "/countries/united-states", desc: "Tourist, business & conference visas" },
+      { name: "Canada & Australia", to: "/countries/canada", desc: "TRV, visit & immigration consultancy" },
+      { name: "All 50+ Countries", to: "/visa-services", desc: "98% visa approval rate from Islamabad" },
+    ],
   },
   {
-    id: "europe",
-    label: "Europe",
-    countries: [
-      { name: "Schengen Area", code: "eu" },
-      { name: "United Kingdom", code: "gb" },
-      { name: "Turkey", code: "tr" },
-      { name: "Germany", code: "de" },
-      { name: "France", code: "fr" },
-    ]
+    label: "Packages Tour",
+    items: [
+      { name: "Umrah Packages 2026", to: "/umrah", desc: "Economy & VIP luxury stays in Makkah & Madinah" },
+      { name: "Europe & UK Tours", to: "/countries/schengen/italy", desc: "Complete guided holiday packages" },
+      { name: "Turkey & Middle East", to: "/countries/central-asia/turkey", desc: "Istanbul, Cappadocia & Dubai packages" },
+      { name: "All Destinations", to: "/countries", desc: "Explore curated international travel" },
+    ],
   },
   {
-    id: "africa",
-    label: "Africa",
-    countries: [
-      { name: "Egypt", code: "eg" },
-      { name: "Morocco", code: "ma" },
-      { name: "South Africa", code: "za" },
-    ]
-  }
+    label: "Air Ticketing",
+    items: [
+      { name: "International Flights", to: "/air-ticketing", desc: "IATA authorized real-time airline fares" },
+      { name: "Partner Airlines (22+)", to: "/partner-airlines", desc: "Emirates, Qatar, PIA, Saudia & Turkish" },
+      { name: "Group Flight Bookings", to: "/contact", desc: "Special discounted corporate & family fares" },
+    ],
+  },
+  {
+    label: "Pages",
+    items: [
+      { name: "About Al Arbab", to: "/about", desc: "15+ years experience & IATA accreditation" },
+      { name: "Hotel Bookings", to: "/hotel-booking", desc: "Worldwide 3 to 5 star hotel reservations" },
+      { name: "Travel Insurance", to: "/travel-insurance", desc: "Schengen & international approved cover" },
+      { name: "Contact & Location", to: "/contact", desc: "Blue Area, Islamabad office" },
+    ],
+  },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeRegion, setActiveRegion] = useState(VISA_REGIONS[0].id);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -60,145 +58,123 @@ export function Navbar() {
 
   useEffect(() => {
     setOpen(false);
+    setActiveDropdown(null);
   }, [location.pathname]);
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 z-[100] mx-auto w-[96%] max-w-7xl transition-all duration-500 ${
+        className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${
           scrolled
-            ? "top-2 h-14 md:h-16 rounded-[1.5rem] glass-modern shadow-[0_8px_30px_rgba(13,71,161,0.08)]"
-            : "top-3 md:top-8 h-16 md:h-20 rounded-xl md:rounded-[1.75rem] glass-modern border border-[rgba(229,231,235,0.3)] shadow-sm"
+            ? "bg-white/95 backdrop-blur-md shadow-[0_4px_25px_rgba(112,45,136,0.08)] border-b border-purple-100/60 py-2.5"
+            : "bg-white/90 backdrop-blur-sm border-b border-gray-100 py-3.5"
         }`}
       >
-        <div className="px-3 sm:px-6 mx-auto flex h-full items-center justify-between gap-2 lg:gap-4 w-full">
-          {/* ── Brand & Expanded Logo ── */}
-          <Link to="/" className="group flex flex-shrink-0 items-center gap-2 lg:gap-3 py-1">
-            <div className="relative flex items-center justify-center">
-              <img
-                src={logo}
-                alt={COMPANY.name}
-                className={`${scrolled ? "h-8 sm:h-10" : "h-10 sm:h-12"} w-auto max-w-[150px] xl:max-w-[200px] object-contain transition-all duration-500 group-hover:scale-105 filter drop-shadow-sm`}
-              />
-            </div>
-            <div className="hidden sm:flex flex-col leading-none">
-              <span className="text-sm md:text-base lg:text-[15px] xl:text-lg font-black tracking-tight text-[#F9B319] whitespace-nowrap">
-                AL ARBAB <span className="text-[#004AAD]">TRAVEL &amp; TOURS</span>
-              </span>
-              <span className="text-[8px] xl:text-[9px] font-black uppercase tracking-[0.25em] text-muted-foreground/70 whitespace-nowrap mt-0.5">
-                Islamabad, Pakistan
-              </span>
-            </div>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          {/* ── Brand Logo ── */}
+          <Link to="/" className="shrink-0 transition-transform hover:scale-[1.02]">
+            <TicketPlanLogo />
           </Link>
 
-          {/* ── Desktop Nav ── */}
-          <nav className="hidden lg:flex items-center lg:gap-0.5 xl:gap-1.5 flex-1 justify-center px-1">
-            {NAV_LINKS.map((l) => (
-              <div key={l.to} className={cn("group/navitem relative", l.label === "Visa" && "cursor-pointer")}>
-                <Link
-                  to={l.to}
-                  activeOptions={{ exact: l.to === "/" }}
-                  className="group relative px-2 xl:px-3 py-2 text-[11px] xl:text-[12px] font-bold text-foreground/80 hover:text-[#0D47A1] transition-all duration-300 data-[status=active]:text-[#0D47A1] data-[status=active]:font-extrabold whitespace-nowrap rounded-lg hover:bg-primary/5 flex items-center gap-1"
-                >
-                  <span className="relative z-10 transition-transform group-hover:-translate-y-0.5 inline-block">
-                    {l.label}
-                  </span>
-                  <span className="absolute inset-x-2 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-[#0D47A1] transition-transform duration-300 group-hover:scale-x-100 group-data-[status=active]:scale-x-100" />
-                </Link>
+          {/* ── Desktop Navigation ── */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {/* Home link */}
+            <Link
+              to="/"
+              className={`relative px-3.5 py-2 text-sm font-bold transition-colors ${
+                location.pathname === "/" ? "text-[#702D88]" : "text-gray-700 hover:text-[#702D88]"
+              }`}
+            >
+              Home
+              {location.pathname === "/" && (
+                <motion.span
+                  layoutId="activeNavTab"
+                  className="absolute inset-x-3.5 -bottom-1 h-0.5 rounded-full bg-[#702D88]"
+                />
+              )}
+            </Link>
 
-                {l.label === "Visa" && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[380px] opacity-0 invisible group-hover/navitem:opacity-100 group-hover/navitem:visible transition-all duration-300 transform group-hover/navitem:translate-y-0 translate-y-2 z-[200]">
-                    <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-border/40 overflow-hidden flex">
-                      {/* Left Pane: Regions */}
-                      <div className="w-[120px] bg-[#F8FAFC] border-r border-border/40 py-2 flex flex-col">
-                        {VISA_REGIONS.map(region => (
-                          <button
-                            key={region.id}
-                            onMouseEnter={() => setActiveRegion(region.id)}
-                            className={cn(
-                              "w-full text-left px-5 py-2.5 text-[13px] font-bold transition-all",
-                              activeRegion === region.id 
-                                ? "text-[#0D47A1] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.02)] border-l-[3px] border-[#0D47A1]" 
-                                : "text-foreground/70 hover:text-[#0D47A1] hover:bg-white/50 border-l-[3px] border-transparent"
-                            )}
+            {/* Dropdown menus */}
+            {NAV_DROPDOWNS.map((menu) => (
+              <div
+                key={menu.label}
+                className="relative"
+                onMouseEnter={() => setActiveDropdown(menu.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors ${
+                    activeDropdown === menu.label ? "text-[#702D88]" : "text-gray-700 hover:text-[#702D88]"
+                  }`}
+                >
+                  <span>{menu.label}</span>
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${
+                      activeDropdown === menu.label ? "rotate-180 text-[#702D88]" : "text-gray-400"
+                    }`}
+                  />
+                </button>
+
+                {/* Dropdown Card */}
+                <AnimatePresence>
+                  {activeDropdown === menu.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute left-0 top-full pt-2 w-72 z-50"
+                    >
+                      <div className="rounded-2xl bg-white p-3 shadow-2xl border border-purple-100/80 ring-1 ring-black/5">
+                        {menu.items.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.to}
+                            className="group flex flex-col rounded-xl px-3 py-2.5 transition-colors hover:bg-purple-50/70"
                           >
-                            {region.label}
-                          </button>
+                            <span className="text-sm font-bold text-gray-800 group-hover:text-[#702D88] transition-colors">
+                              {item.name}
+                            </span>
+                            <span className="text-xs text-gray-500 line-clamp-1">{item.desc}</span>
+                          </Link>
                         ))}
                       </div>
-                      {/* Right Pane: Countries */}
-                      <div className="flex-1 bg-white p-2 max-h-[300px] overflow-y-auto custom-scrollbar">
-                        <div className="grid gap-0.5">
-                          {VISA_REGIONS.find(r => r.id === activeRegion)?.countries.map(country => (
-                            <Link
-                              key={country.code}
-                              to="/countries"
-                              className="flex items-center gap-3.5 px-3 py-2 rounded-xl hover:bg-muted/60 transition-colors group/country"
-                            >
-                              <img 
-                                src={`https://flagcdn.com/w40/${country.code}.png`} 
-                                srcSet={`https://flagcdn.com/w80/${country.code}.png 2x`} 
-                                alt={country.name} 
-                                loading="lazy"
-                                decoding="async"
-                                className="w-5 h-auto shadow-sm rounded-sm group-hover/country:scale-110 transition-transform" 
-                              />
-                              <span className="text-[13px] font-bold text-foreground group-hover/country:text-[#0D47A1] transition-colors">{country.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </nav>
 
-          {/* ── Desktop Right Actions ── */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            {/* SSL Badge */}
-            <div className="relative group/ssl flex items-center justify-center h-9 w-9 shrink-0 rounded-full border border-primary/15 bg-primary/5 transition-all hover:bg-primary/10 cursor-help">
-              <ShieldCheck size={16} className="text-[#0D47A1] relative z-10" />
-              <span className="absolute inset-0 rounded-full bg-primary/10 animate-ping opacity-30" />
-              {/* Tooltip */}
-              <div className="absolute top-full mt-3 right-0 w-56 origin-top-right scale-95 opacity-0 invisible group-hover/ssl:visible group-hover/ssl:scale-100 group-hover/ssl:opacity-100 transition-all duration-300 z-[200]">
-                <div className="absolute -top-3 left-0 w-full h-3" />
-                <div className="rounded-xl bg-card border border-border shadow-2xl p-3.5">
-                  <div className="flex items-start gap-2.5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[#0D47A1]">
-                      <ShieldCheck size={16} />
-                    </div>
-                    <div className="flex flex-col text-left">
-                      <h4 className="text-xs font-bold text-foreground">SSL Secure</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed mt-1 font-medium">
-                        256-bit encrypted &amp; IATA authorized.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* ── Desktop Right Actions (Phone & Apply Now) ── */}
+          <div className="hidden sm:flex items-center gap-3">
+            {/* Real Phone Pill */}
+            <a
+              href={`tel:${COMPANY.mobile}`}
+              className="inline-flex items-center gap-2 rounded-full bg-purple-50 hover:bg-purple-100/80 text-[#702D88] border border-purple-200/80 px-4 py-2 text-xs font-bold transition-all hover:shadow-sm"
+            >
+              <Phone size={14} className="text-[#702D88]" />
+              <span>{COMPANY.phone}</span>
+            </a>
 
+            {/* Apply Now Pill Button */}
             <Link
               to="/visa-services"
-              className="group/btn relative inline-flex items-center p-1 rounded-full bg-gradient-to-r from-[#E61B1B] via-[#E4247E] to-[#C845B6] shadow-[0_4px_18px_rgba(228,36,126,0.4)] transition-all duration-300 hover:shadow-[0_6px_25px_rgba(228,36,126,0.65)] hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#702D88] to-[#581c87] hover:from-[#581c87] hover:to-[#3b0764] text-white px-5 py-2 text-xs font-bold shadow-md shadow-purple-900/20 transition-all hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
-              <span className="relative inline-flex items-center gap-1.5 rounded-full border border-white/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white transition-all duration-300 group-hover/btn:border-white/70 group-hover/btn:bg-white/10 drop-shadow-sm">
-                <span>🔥</span>
-                <span>Apply Visa Now</span>
-                <ChevronRight size={15} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 text-white" />
-              </span>
+              <Send size={13} />
+              <span>Apply Visa</span>
             </Link>
           </div>
 
           {/* ── Mobile Hamburger ── */}
           <button
-            onClick={() => setOpen(true)}
-            className="lg:hidden shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-foreground shadow-sm backdrop-blur-md transition-all hover:bg-muted active:scale-95"
-            aria-label="Open menu"
+            onClick={() => setOpen(!open)}
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-[#702D88] hover:bg-purple-100 transition-colors"
+            aria-label="Toggle menu"
           >
-            <Menu size={20} className="text-[#0D47A1]" />
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
@@ -218,77 +194,63 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 240 }}
-              className="absolute right-0 top-0 h-full w-[86%] max-w-sm bg-background shadow-2xl z-[151]"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white p-6 shadow-2xl overflow-y-auto flex flex-col justify-between"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between border-b border-border px-5 py-4">
-                  <div className="flex items-center gap-3">
-                    <img src={logo} alt={COMPANY.name} className="h-8 w-auto" />
-                    <div className="flex flex-col leading-none">
-                      <span className="text-sm font-black text-[#F9B319]">AL ARBAB</span>
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#004AAD]">Travel &amp; Tours</span>
-                    </div>
-                  </div>
+              <div>
+                <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+                  <TicketPlanLogo />
                   <button
                     onClick={() => setOpen(false)}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-xl hover:bg-muted transition-colors"
-                    aria-label="Close menu"
+                    className="p-1.5 rounded-lg text-gray-500 hover:bg-gray-100"
                   >
                     <X size={20} />
                   </button>
                 </div>
 
-                <nav className="flex-1 overflow-y-auto p-4 custom-scrollbar">
-                  <div className="space-y-1">
-                    {NAV_LINKS.map((l, i) => (
-                      <motion.div
-                        key={l.to}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.03 + 0.1 }}
-                      >
-                        <Link
-                          to={l.to}
-                          activeOptions={{ exact: l.to === "/" }}
-                          activeProps={{ className: "bg-primary/5 text-primary" }}
-                          className="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold text-foreground/80 transition-colors hover:bg-muted"
-                        >
-                          {l.label}
-                          <ChevronRight size={16} className="opacity-40" />
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </div>
-                </nav>
-
-                <div className="p-5 border-t border-border bg-muted/30">
+                <div className="py-4 space-y-1">
                   <Link
-                    to="/contact"
-                    className="flex items-center justify-center gap-2 rounded-[12px] bg-[#F7941D] hover:bg-[#0D47A1] px-4 py-3.5 text-sm font-black text-white shadow-lg transition-transform active:scale-[0.98]"
+                    to="/"
+                    className="block px-3 py-2.5 rounded-xl text-sm font-bold text-[#702D88] bg-purple-50"
                   >
-                    Contact Us <ChevronRight size={16} />
+                    Home
                   </Link>
-
-                  <div className="mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-3">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-600">
-                      <ShieldCheck size={15} />
+                  {NAV_DROPDOWNS.map((section) => (
+                    <div key={section.label} className="py-2">
+                      <p className="px-3 text-xs font-extrabold uppercase tracking-wider text-purple-900/60">
+                        {section.label}
+                      </p>
+                      <div className="mt-1 space-y-0.5">
+                        {section.items.map((it) => (
+                          <Link
+                            key={it.name}
+                            to={it.to}
+                            className="block px-3 py-2 rounded-lg text-xs font-semibold text-gray-700 hover:bg-purple-50 hover:text-[#702D88]"
+                          >
+                            {it.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[11px] font-black text-emerald-700 leading-none">SSL Certified Secure</span>
-                      <span className="text-[9px] font-bold text-emerald-600/70 mt-0.5">Active 256-bit Encryption</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 space-y-2">
-                    <div className="text-[10px] font-medium text-muted-foreground flex items-center gap-2">
-                      <div className="h-1 w-1 rounded-full bg-primary" /> {COMPANY.address}
-                    </div>
-                    <p className="text-[9px] text-muted-foreground/50 text-center uppercase tracking-widest font-bold">
-                      &copy; {new Date().getFullYear()} {COMPANY.name}
-                    </p>
-                  </div>
+                  ))}
                 </div>
+              </div>
+
+              <div className="pt-4 border-t border-gray-100 space-y-3">
+                <a
+                  href={`tel:${COMPANY.mobile}`}
+                  className="flex items-center justify-center gap-2 rounded-full bg-purple-50 text-[#702D88] border border-purple-200 py-2.5 text-xs font-bold"
+                >
+                  <Phone size={14} />
+                  {COMPANY.phoneDisplay}
+                </a>
+                <Link
+                  to="/visa-services"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#702D88] text-white py-2.5 text-xs font-bold shadow-md shadow-purple-900/20"
+                >
+                  <Send size={14} />
+                  Apply Visa Now
+                </Link>
               </div>
             </motion.aside>
           </motion.div>

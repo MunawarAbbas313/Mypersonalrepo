@@ -1,295 +1,291 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Phone, Mail, MapPin, ArrowRight, Plane, Award, Globe, Shield } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageSquare,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Award,
+  ShieldCheck,
+  Globe,
+  Headphones,
+} from "lucide-react";
+import { TicketPlanLogo } from "./TicketPlanLogo";
 import { COMPANY } from "@/data/company";
-import logo from "@/assets/logo.png";
-import { cn } from "@/lib/utils";
-import { AirlinesCloud } from "./AirlinesCloud";
+
+const TRUST_METRICS = [
+  { icon: Award, title: "IATA Authorized Agent", desc: "Official accredited travel & ticketing consultant" },
+  { icon: ShieldCheck, title: "98% Visa Success Rate", desc: "Schengen, UK, USA, Canada & Australia experts" },
+  { icon: Globe, title: "50+ Global Destinations", desc: "Worldwide holiday packages & visa guidance" },
+  { icon: Headphones, title: "24/7 Dedicated Support", desc: "Direct Islamabad desk & WhatsApp helpline" },
+];
+
+const QUICK_LINKS = [
+  { name: "Visa Consultancy", to: "/visa-services" },
+  { name: "Umrah Packages 2026", to: "/umrah" },
+  { name: "Air Ticketing", to: "/air-ticketing" },
+  { name: "Hotel Bookings", to: "/hotel-booking" },
+  { name: "Partner Airlines", to: "/partner-airlines" },
+  { name: "About Us", to: "/about" },
+  { name: "Contact Us", to: "/contact" },
+];
 
 const TOP_DESTINATIONS = [
-  { code: "TH", name: "Thailand", flag: "🇹🇭", tag: "Tropical Vibes" },
-  { code: "MY", name: "Malaysia", flag: "🇲🇾", tag: "Twin Towers" },
-  { code: "ID", name: "Indonesia", flag: "🇮🇩", tag: "Bali & Beyond" },
-  { code: "SG", name: "Singapore", flag: "🇸🇬", tag: "Modern City" },
-  { code: "LK", name: "Sri Lanka", flag: "🇱🇰", tag: "Island Pearl" },
-  { code: "MV", name: "Maldives", flag: "🇲🇻", tag: "Luxury Escape" },
-  { code: "TR", name: "Turkey", flag: "🇹🇷", tag: "East meets West" },
-  { code: "AE", name: "UAE", flag: "🇦🇪", tag: "Dubai & Abu Dhabi" },
-  { code: "SA", name: "Saudi Arabia", flag: "🇸🇦", tag: "Umrah & Hajj" },
-  { code: "CN", name: "China", flag: "🇨🇳", tag: "Great Wall" },
-  { code: "JP", name: "Japan", flag: "🇯🇵", tag: "Tech & Tradition" },
-  { code: "KR", name: "South Korea", flag: "🇰🇷", tag: "K-Culture" },
+  { name: "Thailand", flag: "🇹🇭", to: "/countries/south-asia/thailand", note: "Bangkok & Phuket" },
+  { name: "Malaysia", flag: "🇲🇾", to: "/countries/south-asia/malaysia", note: "Kuala Lumpur" },
+  { name: "Indonesia", flag: "🇮🇩", to: "/countries/south-asia/indonesia", note: "Bali Island" },
+  { name: "Singapore", flag: "🇸🇬", to: "/countries/south-asia/singapore", note: "City Tour" },
+  { name: "Nepal", flag: "🇳🇵", to: "/countries/south-asia/nepal", note: "Kathmandu" },
+  { name: "Europe & Schengen", flag: "🇪🇺", to: "/countries/schengen/italy", note: "29 EU Nations" },
 ];
 
 export function Footer() {
-  const year = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+
   return (
-    <>
-      <AirlinesCloud />
+    <footer className="relative overflow-hidden bg-[#0D47A1] text-white pt-14 pb-8 border-t border-[#08357a]">
+      {/* Background radial highlight & subtle golden gradient line */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_55%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F9B319]/40 to-transparent pointer-events-none" />
 
-      {/* ── Global Destinations Strip ── */}
-      <section className="bg-[#03060f] border-t border-white/5 py-16">
-        <div className="container-px mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Globe size={12} className="text-primary" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Global Destinations</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-black text-white tracking-tight leading-tight">
-                Popular Asian &amp; Global Destinations
-              </h3>
-              <p className="text-xs text-white/30 font-medium mt-1.5 max-w-md">
-                Explore breathtaking destinations across Asia and beyond with AL ARBAB TRAVEL AND TOURS's premium holiday packages.
-              </p>
-            </div>
-            <Link
-              to="/countries"
-              className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-primary hover:text-white transition-colors border border-primary/20 hover:border-white/20 px-5 py-2.5 rounded-full"
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* ── Top Trust Badges Strip (Equal 4 Columns) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-12 border-b border-white/10">
+          {TRUST_METRICS.map((item) => (
+            <div
+              key={item.title}
+              className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
             >
-              View All Destinations <ArrowRight size={13} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {TOP_DESTINATIONS.map((dest) => (
-              <Link
-                key={dest.code}
-                to="/countries"
-                className="group flex flex-col items-center gap-2 p-3 rounded-[12px] bg-white/8 border border-white/10 hover:bg-[#0D47A1] hover:border-[#F7941D] hover:-translate-y-2 hover:scale-[1.05] hover:shadow-[0_10px_20px_rgba(247,148,29,0.2)] transition-all duration-300 text-center"
-              >
-                <img 
-                  src={`https://flagcdn.com/w40/${dest.code.toLowerCase()}.png`}
-                  srcSet={`https://flagcdn.com/w80/${dest.code.toLowerCase()}.png 2x`}
-                  alt={`${dest.name} flag`} 
-                  className="w-8 h-auto rounded-sm shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-125"
-                />
-                <div className="flex flex-col gap-0.5 mt-1">
-                  <span className="text-[11px] font-black text-white/90 group-hover:text-white transition-colors leading-tight">{dest.name}</span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#29ABE2] group-hover:text-[#F7941D] transition-colors">{dest.tag}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Trust Badges Row */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: Award, label: "IATA Authorized", sub: "Official travel agent" },
-              { icon: Shield, label: "SSL Secured", sub: "256-bit encryption" },
-              { icon: Globe, label: "Global Coverage", sub: "120+ countries served" },
-              { icon: Phone, label: "24/7 Support", sub: "WhatsApp & call" },
-            ].map(({ icon: Icon, label, sub }) => (
-              <div key={label} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5">
-                <div className="h-8 w-8 shrink-0 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Icon size={14} className="text-primary" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-black text-white/80 leading-none">{label}</span>
-                  <span className="text-[9px] text-white/30 font-medium mt-0.5">{sub}</span>
-                </div>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F9B319]/15 text-[#F9B319] border border-[#F9B319]/25 shadow-sm">
+                <item.icon size={20} strokeWidth={2.2} />
               </div>
-            ))}
-          </div>
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs font-black text-white tracking-tight leading-tight truncate">
+                  {item.title}
+                </span>
+                <span className="text-[10px] text-white/65 font-medium mt-0.5 leading-snug line-clamp-1">
+                  {item.desc}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
 
-      {/* ── Main Footer ── */}
-      <footer className="relative overflow-hidden bg-[#0D47A1] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_55%)]" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#29ABE2]/30 to-transparent" />
+        {/* ── Main Footer Columns (Balanced 12-Column Grid: 4 + 2 + 3 + 3 = 12) ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 py-12 border-b border-white/10">
+          {/* ── Col 1: Brand Info & Socials (Span 4) ── */}
+          <div className="lg:col-span-4 space-y-5">
+            <Link to="/" className="inline-block group">
+              <TicketPlanLogo light={true} />
+            </Link>
+            <p className="text-xs sm:text-sm text-white/75 leading-relaxed max-w-sm">
+              Pakistan's No.1 travel agency &amp; world-class visa consultancy. IATA-accredited experts for Schengen, USA, UK, Canada, Australia visas &amp; Umrah packages.
+            </p>
 
-        <div className="container-px mx-auto max-w-7xl pt-20 pb-10 relative z-10">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-20">
+            {/* Authority Badges */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              {["IATA Authorized", "15+ Years Trust", "98% Approval Rate", "Islamabad Blue Area"].map((badge) => (
+                <span
+                  key={badge}
+                  className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/10 text-white/90 border border-white/15 cursor-default"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
 
-            {/* Brand Section & Expanded Logo */}
-            <div className="lg:col-span-4 space-y-8">
-              <div className="space-y-5">
-                <Link to="/" className="flex items-center gap-4 group">
-                  <div className="relative p-2 rounded-2xl bg-white/95 shadow-lg border border-white/20 transition-transform duration-500 group-hover:scale-105">
-                    <img src={logo} alt={COMPANY.name} className="h-12 sm:h-14 w-auto max-w-[200px] object-contain" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xl font-black text-white tracking-tighter leading-none uppercase">AL ARBAB</span>
-                    <span className="text-xs font-black text-[#F9B319] tracking-[0.25em] uppercase mt-1">TRAVEL &amp; TOURS</span>
-                  </div>
-                </Link>
-                <p className="text-sm text-white/45 leading-relaxed font-medium">
-                  Pakistan's premier IATA-authorized travel consultancy based in Blue Area, Islamabad. Specialists in Schengen, UK, USA &amp; Canada visas, global airline ticketing, and Umrah packages.
-                </p>
+            {/* Follow Us Social Links */}
+            <div className="space-y-2 pt-2">
+              <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold block">
+                Connect With Us
+              </span>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={COMPANY.socials.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-[#F9B319] hover:text-[#0D47A1] text-white transition-all duration-200 hover:scale-105"
+                >
+                  <Facebook size={15} />
+                </a>
+                <a
+                  href={COMPANY.socials.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-[#F9B319] hover:text-[#0D47A1] text-white transition-all duration-200 hover:scale-105"
+                >
+                  <Instagram size={15} />
+                </a>
+                <a
+                  href={COMPANY.socials.twitter}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Twitter"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-[#F9B319] hover:text-[#0D47A1] text-white transition-all duration-200 hover:scale-105"
+                >
+                  <Twitter size={15} />
+                </a>
+                <a
+                  href={COMPANY.socials.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-[#F9B319] hover:text-[#0D47A1] text-white transition-all duration-200 hover:scale-105"
+                >
+                  <Linkedin size={15} />
+                </a>
               </div>
+            </div>
+          </div>
 
-              {/* Meta Tags / Keywords (hidden for SEO, visible as chips) */}
-              <div className="space-y-3">
-                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">Travel Categories</p>
-                <div className="flex flex-wrap gap-2">
-                  {["Visa Consultancy", "Air Ticketing", "Umrah Packages", "Hotel Booking", "Travel Insurance", "AirLinks Partner"].map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/8 text-[9px] font-bold text-white/40 uppercase tracking-wider hover:bg-white/10 hover:text-white/70 transition-colors cursor-default">
-                      {tag}
+          {/* ── Col 2: Quick Links (Span 2) ── */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.to}
+                    className="text-white/80 hover:text-[#F9B319] transition-colors inline-block whitespace-nowrap"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 3: Top Destinations (Span 3) ── */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white mb-4">
+              Top Destinations
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
+              {TOP_DESTINATIONS.map((dest) => (
+                <li key={dest.name}>
+                  <Link
+                    to={dest.to}
+                    className="group flex items-center gap-2.5 text-white/80 hover:text-[#F9B319] transition-colors"
+                  >
+                    <span className="text-sm shrink-0">{dest.flag}</span>
+                    <span className="font-semibold text-white/90 group-hover:text-[#F9B319] transition-colors whitespace-nowrap">
+                      {dest.name}
                     </span>
-                  ))}
-                </div>
-              </div>
+                    <span className="text-[10px] text-white/45 hidden sm:inline whitespace-nowrap">
+                      ({dest.note})
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div className="flex flex-wrap gap-10">
-                <div className="space-y-3">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">Follow Us</h4>
-                  <div className="flex gap-3">
-                    {[
-                      { Icon: Facebook, href: COMPANY.socials.facebook, color: "hover:bg-blue-600" },
-                      { Icon: Instagram, href: COMPANY.socials.instagram, color: "hover:bg-pink-600" },
-                    ].map(({ Icon, href, color }) => (
-                      <a
-                        key={href}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn("h-9 w-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-115 hover:text-[#F7941D] hover:border-[#F7941D]", color)}
-                      >
-                        <Icon size={15} />
-                      </a>
-                    ))}
+          {/* ── Col 4: Contact & Head Office (Span 3) ── */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white mb-4">
+              Contact &amp; Head Office
+            </h4>
+            <ul className="space-y-3.5 text-xs sm:text-sm font-medium">
+              {/* Helplines */}
+              <li className="flex items-start gap-3 text-white/85">
+                <Phone size={16} className="text-[#F9B319] shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-bold">
+                    Helpline &amp; Landline
+                  </span>
+                  <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                    <a href={`tel:${COMPANY.mobile}`} className="hover:text-[#F9B319] transition-colors font-bold">
+                      {COMPANY.mobile}
+                    </a>
+                    <span className="text-white/30">|</span>
+                    <a href={`tel:${COMPANY.landline.replace(/\D/g, "")}`} className="hover:text-[#F9B319] transition-colors font-bold">
+                      {COMPANY.landline}
+                    </a>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">Our Office</h4>
-                  <a href={COMPANY.mapUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors group/map">
-                    <MapPin size={14} className="text-primary group-hover/map:scale-110 transition-transform shrink-0" />
-                    <span className="text-xs font-bold">Eagle Plaza, Blue Area, Islamabad (Map)</span>
+              </li>
+
+              {/* Email */}
+              <li className="flex items-start gap-3 text-white/85">
+                <Mail size={16} className="text-[#F9B319] shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-bold">
+                    Email Inquiries
+                  </span>
+                  <a href={`mailto:${COMPANY.email}`} className="hover:text-[#F9B319] transition-colors font-bold mt-0.5 break-all">
+                    {COMPANY.email}
                   </a>
                 </div>
-              </div>
-            </div>
+              </li>
 
-            {/* Links Grid */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-
-                {/* Asian Destinations 1 */}
-                <div className="space-y-6">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white">Asian Destinations</h4>
-                  <ul className="space-y-3">
-                    {[
-                      { n: "Thailand", s: "thailand", f: "TH" },
-                      { n: "Malaysia", s: "malaysia", f: "MY" },
-                      { n: "Indonesia", s: "indonesia", f: "ID" },
-                      { n: "Singapore", s: "singapore", f: "SG" },
-                      { n: "Sri Lanka", s: "sri-lanka", f: "LK" },
-                      { n: "Maldives", s: "maldives", f: "MV" },
-                    ].map((d) => (
-                      <li key={d.s}>
-                        <Link to="/countries" className="text-xs font-medium text-white/80 hover:text-[#F7941D] transition-all flex items-center gap-2.5 group/link">
-                          <img src={`https://flagcdn.com/w20/${d.f.toLowerCase()}.png`} alt={d.n} className="w-4 h-auto shadow-sm group-hover/link:scale-110 transition-transform rounded-[2px]" />
-                          {d.n}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Address */}
+              <li className="flex items-start gap-3 text-white/85">
+                <MapPin size={16} className="text-[#F9B319] shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-bold">
+                    Blue Area Office
+                  </span>
+                  <span className="leading-relaxed text-white/80 mt-0.5">
+                    {COMPANY.address}
+                  </span>
                 </div>
+              </li>
 
-                {/* Asian Destinations 2 */}
-                <div className="space-y-6">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white">Middle East & Beyond</h4>
-                  <ul className="space-y-3">
-                    {[
-                      { n: "Turkey", s: "turkey", f: "TR" },
-                      { n: "UAE", s: "uae", f: "AE" },
-                      { n: "Saudi Arabia", s: "saudi-arabia", f: "SA" },
-                      { n: "China", s: "china", f: "CN" },
-                      { n: "Japan", s: "japan", f: "JP" },
-                      { n: "South Korea", s: "south-korea", f: "KR" },
-                    ].map((d) => (
-                      <li key={d.s}>
-                        <Link to="/countries" className="text-xs font-medium text-white/80 hover:text-[#F7941D] transition-all flex items-center gap-2.5 group/link">
-                          <img src={`https://flagcdn.com/w20/${d.f.toLowerCase()}.png`} alt={d.n} className="w-4 h-auto shadow-sm group-hover/link:scale-110 transition-transform rounded-[2px]" />
-                          {d.n}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Timing */}
+              <li className="flex items-start gap-3 text-white/85">
+                <Clock size={16} className="text-[#F9B319] shrink-0 mt-0.5" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] uppercase tracking-wider text-white/50 font-bold">
+                    Office Hours
+                  </span>
+                  <span className="text-white/80 mt-0.5">
+                    Monday – Saturday: 10:00 AM – 7:00 PM
+                  </span>
                 </div>
+              </li>
+            </ul>
 
-                {/* Ticketing & Airlines */}
-                <div className="space-y-6">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white flex items-center gap-2">
-                    <Plane size={9} className="text-primary" /> Ticketing & Airlines
-                  </h4>
-                  <ul className="space-y-3">
-                    {[
-                      { label: "PIA Pakistan", to: "/partner-airlines", f: "PK" },
-                      { label: "Emirates", to: "/partner-airlines", f: "AE" },
-                      { label: "Qatar Airways", to: "/partner-airlines", f: "QA" },
-                      { label: "Turkish Airlines", to: "/partner-airlines", f: "TR" },
-                      { label: "Saudia", to: "/partner-airlines", f: "SA" },
-                      { label: "Etihad Airways", to: "/partner-airlines", f: "AE" },
-                    ].map((link) => (
-                      <li key={link.label}>
-                        <Link to={link.to as any} className="text-xs font-medium text-white/80 hover:text-[#F7941D] transition-all flex items-center gap-2.5 group/link">
-                          <img 
-                            src={`https://flagcdn.com/w20/${link.f.toLowerCase()}.png`} 
-                            alt={link.label} 
-                            loading="lazy"
-                            decoding="async"
-                            className="w-4 h-auto shadow-sm group-hover/link:scale-110 transition-transform rounded-[2px]" 
-                          />
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Contact */}
-                <div className="space-y-6">
-                  <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-white">Contact</h4>
-                  <div className="space-y-5">
-                    <div className="group block">
-                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary mb-1 flex items-center gap-1">
-                        <Phone size={8} /> Direct Call
-                      </p>
-                      <p className="text-xs font-black text-white/90">
-                        <a href={`tel:${COMPANY.mobile}`} className="hover:text-white hover:underline underline-offset-4">{COMPANY.mobile}</a>
-                        {" "}<span className="text-white/40">|</span>{" "}
-                        <a href={`tel:${COMPANY.landline.replace(/\D/g, "")}`} className="hover:text-white hover:underline underline-offset-4">{COMPANY.landline}</a>
-                      </p>
-                    </div>
-                    <a href={`mailto:${COMPANY.email}`} className="group block">
-                      <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/60 mb-1 flex items-center gap-1">
-                        <Mail size={8} /> Email
-                      </p>
-                      <p className="text-xs font-black text-white group-hover:text-[#F7941D] group-hover:underline underline-offset-4 break-all">{COMPANY.email}</p>
-                    </a>
-                    <a href={`https://wa.me/${COMPANY.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-white/80 hover:text-[#F7941D] transition-colors">
-                      WhatsApp Us <ArrowRight size={10} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col items-center md:items-start gap-1.5">
-              <p className="text-[10px] font-bold text-white/50 tracking-[0.2em] uppercase text-center md:text-left">
-                © {year} AL ARBAB TRAVEL AND TOURS Travel &amp; Tours · All Rights Reserved.
-              </p>
-              <p className="text-[9px] font-bold text-white/30 uppercase tracking-widest text-center md:text-left">
-                IATA Authorized Agent · AirLinks Partner Network · Islamabad
-              </p>
-            </div>
-
-            <div className="flex items-center gap-5 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white/70 transition-colors">
-              <span>Privacy Policy</span>
-              <div className="h-3 w-px bg-white/20" />
-              <span>Terms of Service</span>
-              <div className="h-3 w-px bg-white/20" />
-              <span>Sitemap</span>
+            {/* Instant WhatsApp CTA Button */}
+            <div className="pt-2">
+              <a
+                href={`https://wa.me/${COMPANY.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2.5 text-xs font-bold shadow-lg shadow-green-950/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <MessageSquare size={16} />
+                <span>Instant WhatsApp Inquiry</span>
+              </a>
             </div>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* ── Bottom Bar: Copyright & Terms ── */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+            <p>© {currentYear} {COMPANY.name}. All Rights Reserved.</p>
+            <span className="hidden sm:inline text-white/30">·</span>
+            <p className="text-[11px] text-white/50">IATA Authorized Agent · Islamabad, Pakistan</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="hover:text-[#F9B319] transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-white/20">|</span>
+            <Link to="/terms" className="hover:text-[#F9B319] transition-colors">
+              Terms &amp; Conditions
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

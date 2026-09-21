@@ -86,32 +86,38 @@
   --popover: #ffffff;
   --popover-foreground: #222222;
 
-  /* Brand Primary: Royal Blue (#0D47A1) */
-  --primary: #0D47A1;
+  /* TicketPlan Brand Palette */
+  --primary: #702D88;
   --primary-foreground: #ffffff;
-  --primary-glow: #29ABE2;
+  --primary-glow: #9333EA;
 
-  /* Brand Accent: Bright Orange (#F7941D) */
-  --accent: #F7941D;
+  --accent: #F59E0B;
   --accent-foreground: #ffffff;
-  --accent-glow: #FFA726;
+  --accent-glow: #FBBF24;
 
-  /* Brand Secondary Highlights */
-  --sky-blue: #29ABE2;
-  --earth-green: #7AC943;
+  --brand-purple: #702D88;
+  --brand-purple-dark: #4C1D95;
+  --brand-purple-deep: #3B0764;
+  --brand-purple-light: #FAF5FF;
+  --brand-purple-subtle: #F3E8FF;
+  --brand-purple-border: #E9D5FF;
 
-  --secondary: #F1F5F9;
-  --secondary-foreground: #0D47A1;
+  /* Secondary Highlights */
+  --sky-blue: #0284C7;
+  --earth-green: #10B981;
+
+  --secondary: #FAF5FF;
+  --secondary-foreground: #702D88;
 
   --muted: #F8FAFC;
   --muted-foreground: #64748B;
 
-  --destructive: #DC2626;
+  --destructive: #EF4444;
   --destructive-foreground: #ffffff;
 
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #F7941D;
+  --ring: #702D88;
 }
 
 .dark {
